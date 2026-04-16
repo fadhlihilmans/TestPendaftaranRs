@@ -6,11 +6,11 @@
                 <i data-lucide="menu" class="w-5 h-5"></i>
             </button>
 
-                    <a href="/pasien">Menu Pasien</a>
-                    <a href="/poli">Menu Poli</a>
-                    <a href="/dokter">Menu Dokter</a>
+                    <a href="/pasien">Menu Pasien | </a>
+                    <a href="/poli">Menu Poli | </a>
+                    <a href="/dokter">Menu Dokter | </a>
+                    <a href="/pendaftaran">Menu Pendaftaran</a>
 
-            {{-- <livewire:admin.periode-filter /> --}}
 
         </div>
         
