@@ -55,7 +55,7 @@
                 
                 <div>
                     <label class="block text-sm font-medium mb-1">Tanggal Daftar</label>
-                    <input wire:model="tanggal_daftar" type="date" class="w-full px-3 py-2  rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-gray-900/20 focus:border-gray-300 @error('tanggal_daftar') invalid @enderror">
+                    <input wire:model="tanggal_daftar" type="datetime-local" class="w-full px-3 py-2  rounded-xl border border-gray-200 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-gray-900/20 focus:border-gray-300 @error('tanggal_daftar') invalid @enderror">
                     @error('tanggal_daftar') 
                         <span class="text-red-500 text-xs mt-1">{{ $message }}</span> 
                     @enderror
@@ -189,14 +189,14 @@
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="text-sm">{{ $item->dokter->nama_dokter ?? '-' }}</div>
                             </td>
-                            {{-- <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <button wire:click="edit({{ $item->id }})" class="hover bg-white mr-1">
                                     <i class="bx bx-pencil text-base"></i>
                                 </button>
                                 <button wire:click="confirmDelete({{ $item->id }})" class="hover bg-white">
                                     <i  class="bx bx-trash-alt text-base"></i>
                                 </button>
-                            </td> --}}
+                            </td>
                         </tr>
                     @empty
                         <tr>

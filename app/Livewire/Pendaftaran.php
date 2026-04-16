@@ -12,10 +12,11 @@ use Illuminate\Support\Facades\DB;
 
 class Pendaftaran extends Component
 {
-    public $formAdd = false, $formEdit = false, $confirmingDelete = false;
+    public $formAdd = false, $formEdit = false, $confirmingDelete = false, $kuotaAlert = false;
     public $search = '';
     public $pendaftaran_id, $tanggal_daftar, $pasien_id, $poli_id, $dokter_id;
     public $selectedPendaftaranId, $listPasien, $listPoli, $listDokter;
+    public $kuota, $getKuotaPoli;
     
     public function render()
     {
@@ -23,7 +24,7 @@ class Pendaftaran extends Component
         $this->listPoli = PoliModel::get();
         $this->listDokter = DokterModel::get();
 
-        $listPendaftaran = PendaftaranModel::with(['listPasien', 'listPoli', 'listDokter']);
+        $listPendaftaran = PendaftaranModel::with('pasien', 'poli', 'dokter')->get();
         return view('livewire.pendaftaran', compact('listPendaftaran'));
     }
 
@@ -45,11 +46,25 @@ class Pendaftaran extends Component
         try {
             DB::beginTransaction();
 
+            $this->getKuotaPoli = PoliModel::where('id', $this->poli_id)->get();
+            foreach ($this->getKuotaPoli as $i){
+                if($i->kuota != 0){
+                    $kuotaAKhir = $i->kuota - 1;
+                }else{
+                    $this->dispatch('failed-message', 'Kota Poli 0, besok lagi :).');
+                }
+            }
+
             PendaftaranModel::create([
                 'pasien_id' => $this->pasien_id,
                 'poli_id' => $this->poli_id,
                 'dokter_id' => $this->dokter_id,
                 'tanggal_daftar' => $this->tanggal_daftar,
+            ]);
+
+            $poliUpdate = PoliModel::where('id', $this->poli_id);
+            $poliUpdate->update([
+                'kuota' => $kuotaAKhir,
             ]);
     
             DB::commit();
@@ -72,6 +87,11 @@ class Pendaftaran extends Component
         $this->poli_id = $pendaftaran->poli_id;
         $this->dokter_id = $pendaftaran->dokter_id;
         $this->tanggal_daftar = $pendaftaran->tanggal_daftar;
+        
+        // $getKuotaPoli = PoliModel::where('id', $pendaftaran->poli_id)->get();
+        // foreach ($getKuotaPoli as $i){
+        //     dd($i->kuota);
+        // }
     }
 
     public function update()
