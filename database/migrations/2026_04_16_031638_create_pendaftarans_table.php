@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('pasien_id')->references('id')->on('pasien')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('poli_id')->references('id')->on('poli')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('dokter_id')->references('id')->on('dokter')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->date('tanggal_daftar');
+            $table->datetime('tanggal_daftar');
             $table->timestamps();
         });
     }

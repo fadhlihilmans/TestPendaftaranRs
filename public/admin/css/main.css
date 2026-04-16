@@ -1,0 +1,111 @@
+body {
+  background-color: #F8FAFC !important;
+  color: #000000 !important;
+  /* font-family: "Inter", sans-serif !important; */
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+}
+
+/* scroll */
+/* Alternatif 1: Header mengambang dengan backdrop blur */
+.floating-header {
+    backdrop-filter: blur(10px);
+    background-color: rgba(248, 250, 252, 0.8);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.3);
+}
+
+/* Alternatif 2: Header dengan shadow yang lebih halus */
+.elevated-header {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Custom scrollbar untuk area main */
+.custom-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+.custom-scroll::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+.custom-scroll::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+/* scroll */
+.overflow-x-hidden{
+  overflow-x: hidden !important;
+}
+.overflow-y-auto {
+  overflow-y: auto !important;
+}
+
+input.invalid, select.invalid, textarea.invalid{
+  border-color: #dc2626 !important;
+}
+
+.border-light {
+  border-color: #e2e8f0 !important;
+}
+
+.border-grays {
+  border-color: #94a3b8 !important;
+}
+
+.bg-light {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+.divide-light {
+  border-color: #e5e7eb !important;
+}
+
+.bg-red-600{
+  background-color: #dc2626 !important;
+  color: #ffffff;
+}
+
+.bg-gray-900{
+  background-color: #000000 !important;
+  color: #ffffff;
+}
+
+body.swal2-shown > [aria-hidden='true'] {
+  transition: 0.1s filter !important;
+  filter: blur(3px) !important;
+}
+.swal2-popup.swal-mini {
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+}
+.swal2-timer-progress-bar { 
+  height: 4px !important; 
+  background-color: #2196f3 !important;
+}
+
+
+
+/* dropdown & sidebar */
+.dropdown-menu { display: none; }
+.dropdown-menu.show { 
+  display: block;
+ }
+.sidebar-submenu { 
+  max-height: 0; overflow: hidden; 
+  transition: max-height 0.3s ease; 
+  display:none;
+}
+.sidebar-submenu.show { max-height: 200px; display:block; }
+
+/* Modal */
+.modal { display: none; }
+.modal.show { display: flex; }
+.non-modal { display: flex; }
+
+/* Form */
+.form-step { display: none; }
+.form-step.active { display: block; }
+.step-indicator.active { background-color: rgb(23, 23, 23); color: white; }
+.image-upload-preview { display: none; }
+.image-upload-preview.show { display: block; }
