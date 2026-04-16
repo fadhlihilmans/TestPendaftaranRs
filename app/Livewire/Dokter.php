@@ -79,7 +79,6 @@ class Dokter extends Component
         }
     }
 
-
     public function resetForm()
     {
         $this->formAdd = false;
